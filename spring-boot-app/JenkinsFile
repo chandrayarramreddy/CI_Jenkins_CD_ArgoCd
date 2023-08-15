@@ -31,7 +31,7 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "chandray/CI_Jenkins_CD_ArgoCd:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "chandray/cicdargocd:${BUILD_NUMBER}"
         // DOCKERFILE_LOCATION = "CI_Jenkins_CD_ArgoCd/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
