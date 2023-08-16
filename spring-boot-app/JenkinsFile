@@ -17,7 +17,7 @@ pipeline {
         sh 'ls -ltr'
         // build the project and create a JAR file
         //sh 'cd CI_Jenkins_CD_ArgoCd/spring-boot-app && mvn clean package'  //when using this code @tmp folder is created and failing job to find the folders
-        dir('CI_Jenkins_CD_ArgoCd/spring-boot-app') {
+        dir('spring-boot-app') {         // removed CI_Jenkins_CD_ArgoCd/  as it is creating issue when checking pom.xml
         // Run your build commands here
          sh 'mvn clean package'
         }
