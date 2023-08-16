@@ -16,7 +16,11 @@ pipeline {
       steps {
         sh 'ls -ltr'
         // build the project and create a JAR file
-        sh 'cd CI_Jenkins_CD_ArgoCd/spring-boot-app && mvn clean package'
+        //sh 'cd CI_Jenkins_CD_ArgoCd/spring-boot-app && mvn clean package'  //when using this code @tmp folder is created and failing job to find the folders
+        dir('CI_Jenkins_CD_ArgoCd/spring-boot-app') {
+        // Run your build commands here
+         sh 'mvn clean package'
+        }
       }
     }
     stage('Static Code Analysis') {
