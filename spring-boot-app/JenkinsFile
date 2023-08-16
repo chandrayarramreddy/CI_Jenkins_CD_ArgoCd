@@ -29,7 +29,7 @@ pipeline {
       }
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-          sh 'cd CI_Jenkins_CD_ArgoCd/spring-boot-app && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+          sh 'cd spring-boot-app && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
         }
       }
     }
@@ -41,7 +41,7 @@ pipeline {
       }
       steps {
         script {
-            sh 'cd CI_Jenkins_CD_ArgoCd/spring-boot-app && docker build -t ${DOCKER_IMAGE} .'
+            sh 'cd spring-boot-app && docker build -t ${DOCKER_IMAGE} .'
             def dockerImage = docker.image("${DOCKER_IMAGE}")
             docker.withRegistry('https://index.docker.io/v1/', "docker-cred") {
                 dockerImage.push()
