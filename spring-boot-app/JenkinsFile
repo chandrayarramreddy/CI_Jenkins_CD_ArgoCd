@@ -55,16 +55,16 @@ pipeline {
             GIT_USER_NAME = "chandrayarramreddy"
         }
         steps {
-            withCredentials([gitUsernamePassword(credentialsId: 'github1', gitToolName: 'Default')])  {
-                sh '''
+              sh '''
                     git config user.email "chandra.y@gmail.com"
                     git config user.name "Chandra Y"
                     BUILD_NUMBER=${BUILD_NUMBER}
                     sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
                     git add spring-boot-app-manifests/deployment.yml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                    git push https://github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} main
                 '''
+            withCredentials([gitUsernamePassword(credentialsId: 'github1', gitToolName: 'Default')])  {
+               sh" git push https://github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} main"
             }
         }
     }
