@@ -68,7 +68,7 @@ pipeline {
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                 '''
             withCredentials([gitUsernamePassword(credentialsId: 'github1', gitToolName: 'Default')])  {
-               sh" git push https://github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} main"
+               sh" git push https://github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main"
             }
         }
       }
