@@ -57,8 +57,8 @@ pipeline {
         steps {
             script {
               sh '''
-                    git config user.email "chandra.y@gmail.com"
-                    git config user.name "Chandra Y"
+                    git config --global user.email "chandra.y@gmail.com"
+                    git config --global user.name "Chandra Y"
                     BUILD_NUMBER=${BUILD_NUMBER}
                     sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
                     git add spring-boot-app-manifests/deployment.yml
