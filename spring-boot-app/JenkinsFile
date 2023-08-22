@@ -55,6 +55,7 @@ pipeline {
             GIT_USER_NAME = "chandrayarramreddy"
         }
         steps {
+            script {
               sh '''
                     git config user.email "chandra.y@gmail.com"
                     git config user.name "Chandra Y"
@@ -67,6 +68,7 @@ pipeline {
                sh" git push https://github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} main"
             }
         }
+      }
     }
   }
 }
